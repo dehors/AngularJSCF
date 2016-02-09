@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Curso angular</title>
 	<script src="./node_modules/angular/angular.js"></script>
+	<script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script> 
 	<script src="js/controller.js"></script>
 </head>
 <!--
@@ -22,6 +23,7 @@
 	<button ng-click="addComment()">add</button>
 </body>
  -->
+<!--
 <body ng-controller="jsonplaceholder">
 <h1>New Posts</h1>
 	<input type="text" ng-model="newPost.title">
@@ -35,4 +37,21 @@
 		</li>
 	</ul>
 </body>
+ -->
+ <body ng-controller="LocalStorage">
+ <h1>New Activity</h1>
+ <form ng-submit="addActv()">
+ 	<input type="text" ng-model="newActiv.description">
+ 	<input type="datetime-local" ng-model="newActiv.date">
+ 	<input type="submit" value="Add activity">
+ </form>
+<h1>Clear List</h1>
+	<button ng-click="clean()">Clean</button>
+<h1>Activities</h1>
+	<ul>
+		<li ng-repeat="activity in activities">
+			{{ activity.description }} - {{ activity.date | date: 'short' }}
+		</li>
+	</ul>
+ </body>
 </html>

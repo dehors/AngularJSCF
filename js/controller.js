@@ -1,4 +1,4 @@
-var app = angular.module("MyFirstapp", []);
+var app = angular.module("MyFirstapp", ["LocalStorageModule"]);
 
 app.controller("FirstController", function($scope){
 	$scope.nombre = "Luis";
@@ -20,7 +20,7 @@ app.controller("FirstController", function($scope){
 });
 
 app.controller("jsonplaceholder", function($scope, $http){
-	$scope.posts = {};
+	$scope.posts = [];
 	$scope.newPost = {};
 	$http.get("http://jsonplaceholder.typicode.com/posts")
 		.success(function(data){
@@ -45,5 +45,25 @@ app.controller("jsonplaceholder", function($scope, $http){
 		});
 	};
 
+});
+
+app.controller("LocalStorage", function($scope, localStorageService){
+	if(localStorageService.get("angular-todolist")){
+		$scope.activities = localStorageService.get("angular-todolist");
+	}else
+	{
+		$scope.activities = [];
+	}	
+	$scope.newActiv = {};
+	$scope.$watchCollection('activities', function(newValue,oldValue){
+		localStorageService.set("angular-todolist",$scope.activities);
+	});
+	$scope.addActv = function(){
+		$scope.activities.push($scope.newActiv);
+		$scope.newActiv = {};		
+	};
+	$scope.clean = function(){
+		$scope.activities = [];		
+	};
 });
 
