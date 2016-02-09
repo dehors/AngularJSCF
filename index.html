@@ -45,7 +45,9 @@
 	</style>
 	<script src="./node_modules/angular/angular.js"></script>
 	<script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script> 
-	<script src="js/controller.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/services.js"></script>
 </head>
 <!--
 <body ng-controller="FirstController">
@@ -102,7 +104,7 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
 </div>
 </body>
  -->
-
+<!--
  <body ng-controller="LocalStorage">
  <h1>Local Storage</h1>
  <h2>New Activity</h2>
@@ -125,5 +127,27 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
 	{{ mi_html | json }}
 	{{ costo | currency:'$' }}
  </body>
-
+ -->
+ <body ng-controller="LocalStorage">
+ <h1>Local Storage</h1>
+ <h2>New Activity</h2>
+ <form ng-submit="addActv()">
+ 	<input type="text" ng-model="newActiv.description">
+ 	<input type="datetime-local" ng-model="newActiv.date">
+ 	<input type="submit" value="Add activity">
+ </form>
+<h2>Clear List</h2>
+	<button ng-click="clean()">Clean</button>
+<h2>Activities</h2>
+	<ul>
+		<li ng-repeat="activity in activities">
+			{{ activity.description }} - {{ activity.date | date: 'short' }}
+		</li>
+	</ul>
+<hr>
+<h1>Filters</h1>
+	{{ htmlstring | removeHtml }}
+	{{ mi_html | json }}
+	{{ costo | currency:'$' }}
+</body>
 </html>

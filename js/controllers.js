@@ -1,6 +1,6 @@
-var app = angular.module("MyFirstapp", ["LocalStorageModule"]);
+angular.module("MyFirstapp")
 
-app.controller("FirstController", function($scope){
+.controller("FirstController", function($scope){
 	$scope.nombre = "Luis";
 	$scope.newcomment = {};
 	$scope.comentarios = [
@@ -17,9 +17,9 @@ app.controller("FirstController", function($scope){
 		$scope.comentarios.push($scope.newcomment);
 		$scope.newcomment = {};
 	};
-});
+})
 
-app.controller("jsonplaceholder", function($scope, $http){
+.controller("jsonplaceholder", function($scope, $http){
 	$scope.posts = [];
 	$scope.newPost = {};
 	$scope.loading = true;
@@ -48,9 +48,9 @@ app.controller("jsonplaceholder", function($scope, $http){
 		});
 	};
 
-});
+})
 
-app.controller("LocalStorage", function($scope, localStorageService){
+.controller("LocalStorage", function($scope, localStorageService){
 	$scope.htmlstring = "<p>Hola Mundo</p>";
 	$scope.mi_html = {};
 	$scope.mi_html.title = "Hola";
@@ -73,18 +73,18 @@ app.controller("LocalStorage", function($scope, localStorageService){
 	$scope.clean = function(){
 		$scope.activities = [];		
 	};
-});
+})
 
-app.filter("removeHtml",function(){
+.filter("removeHtml",function(){
 	return function(texto){
 		return String(texto).replace(/<[^>]+>/gm,'');
 	};
-});
+})
 
-app.run(function($rootScope){
+.run(function($rootScope){
 	$rootScope.nombre = "Prueba de rootScope padre";
-});
+})
 
-app.controller("ChildController", function(){
-	
-});
+.controller("ChildController", function(){
+
+})
