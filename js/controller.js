@@ -23,6 +23,7 @@ app.controller("jsonplaceholder", function($scope, $http){
 	$scope.posts = [];
 	$scope.newPost = {};
 	$scope.loading = true;
+	$scope.nombre = "Prueba de rootScope hijo";
 	$http.get("http://jsonplaceholder.typicode.com/posts")
 		.success(function(data){
 			$scope.posts = data;
@@ -80,3 +81,10 @@ app.filter("removeHtml",function(){
 	};
 });
 
+app.run(function($rootScope){
+	$rootScope.nombre = "Prueba de rootScope padre";
+});
+
+app.controller("ChildController", function(){
+	
+});

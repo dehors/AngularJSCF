@@ -88,8 +88,14 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
     <span class="glyphicon glyphicon-thumbs-down"></span> I hide when your checkbox is checked.
   </div>
 </div>
+<hr>
+<!-- rootscope y childcontrollers -->
+<li>{{ nombre }}</li>
+<li>{{ $parent.nombre }}</li>
+<div ng-controller="ChildController">
+	<li>{{ $parent.$parent.nombre }}</li>
+</div>
 </body>
-
  <!--
  <body ng-controller="LocalStorage">
  <h1>New Activity</h1>
