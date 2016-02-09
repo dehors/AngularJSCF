@@ -16,6 +16,10 @@
 		overflow: hidden;
 		display: block !important;
 	}
+
+	h1{
+		color:#799999;
+	}
 /*---------------------------------------------*/
 	.animate-hide {
 	  -webkit-transition: all linear 0.5s;
@@ -59,13 +63,14 @@
 	<button ng-click="addComment()">add</button>
 </body>
  -->
-
+<!--
 <body ng-controller="jsonplaceholder">
-<h1>New Posts</h1>
+<h1>Ajax $http</h1>
+<h2>New Posts</h2>
 	<input type="text" ng-model="newPost.title">
 	<textarea ng-model="newPost.body"></textarea> 
 	<button ng-click="addPost()">add</button>
-<h1>Posts</h1>
+<h2>Posts</h2>
 	<div ng-show="loading">Loading...</div>
 	<div ng-show="!loading && posts.length <= 0">No results found</div>
 	<ul ng-show="posts.length > 0" class="animated">
@@ -74,7 +79,7 @@
 			<p>{{ post.body }}</p>	
 		</li>
 	</ul>
-<!-- ------------------------------------------------ -->
+<h1>nghide ngshow</h1>
 Click me: <input type="checkbox" ng-model="checked"><br/>
 <div>
   Show:
@@ -89,33 +94,36 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
   </div>
 </div>
 <hr>
-<!-- rootscope y childcontrollers -->
+<h1>rootScope ChildController</h1>
 <li>{{ nombre }}</li>
 <li>{{ $parent.nombre }}</li>
 <div ng-controller="ChildController">
 	<li>{{ $parent.$parent.nombre }}</li>
 </div>
 </body>
- <!--
+ -->
+
  <body ng-controller="LocalStorage">
- <h1>New Activity</h1>
+ <h1>Local Storage</h1>
+ <h2>New Activity</h2>
  <form ng-submit="addActv()">
  	<input type="text" ng-model="newActiv.description">
  	<input type="datetime-local" ng-model="newActiv.date">
  	<input type="submit" value="Add activity">
  </form>
-<h1>Clear List</h1>
+<h2>Clear List</h2>
 	<button ng-click="clean()">Clean</button>
-<h1>Activities</h1>
+<h2>Activities</h2>
 	<ul>
 		<li ng-repeat="activity in activities">
 			{{ activity.description }} - {{ activity.date | date: 'short' }}
 		</li>
 	</ul>
+<hr>
 <h1>Filters</h1>
 	{{ htmlstring | removeHtml }}
 	{{ mi_html | json }}
 	{{ costo | currency:'$' }}
  </body>
-  -->
+
 </html>
