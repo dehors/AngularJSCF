@@ -6,6 +6,7 @@
 	<script src="./node_modules/angular/angular.js"></script>
 	<script src="js/controller.js"></script>
 </head>
+<!--
 <body ng-controller="FirstController">
 	<input type="text" ng-model="nombre">
 	{{ "Hola " + nombre }}
@@ -19,5 +20,19 @@
 	<input type="text" ng-model="newcomment.comentario">
 	<input type="text" ng-model="newcomment.username">
 	<button ng-click="addComment()">add</button>
+</body>
+ -->
+<body ng-controller="jsonplaceholder">
+<h1>New Posts</h1>
+	<input type="text" ng-model="newPost.title">
+	<textarea ng-model="newPost.body"></textarea> 
+	<button ng-click="addPost()">add</button>
+<h1>Posts</h1>
+	<ul>
+		<li ng-repeat="post in posts">
+			<h2>{{ post.title }}</h2>
+			<p>{{ post.body }}</p>	
+		</li>
+	</ul>
 </body>
 </html>

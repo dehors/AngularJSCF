@@ -19,3 +19,31 @@ app.controller("FirstController", function($scope){
 	};
 });
 
+app.controller("jsonplaceholder", function($scope, $http){
+	$scope.posts = {};
+	$scope.newPost = {};
+	$http.get("http://jsonplaceholder.typicode.com/posts")
+		.success(function(data){
+			$scope.posts = data;
+			console.log(data);
+		})
+		.error(function(err){
+
+		});
+	$scope.addPost = function(){
+		$http.post("http://jsonplaceholder.typicode.com/posts",{
+			title: 	$scope.newPost.title,
+			body: 	$scope.newPost.body,
+			UserId: 1
+		})
+		.success(function(data,status,headers,config){
+			$scope.posts.push($scope.newPost);
+			$scope.newPost = {};	
+		})
+		.error(function(error,status,headers,config){
+			console.log(error);
+		});
+	};
+
+});
+
