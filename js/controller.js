@@ -48,6 +48,11 @@ app.controller("jsonplaceholder", function($scope, $http){
 });
 
 app.controller("LocalStorage", function($scope, localStorageService){
+	$scope.htmlstring = "<p>Hola Mundo</p>";
+	$scope.mi_html = {};
+	$scope.mi_html.title = "Hola";
+	$scope.mi_html.body = "Hola Mundo";
+	$scope.costo = 2;
 	if(localStorageService.get("angular-todolist")){
 		$scope.activities = localStorageService.get("angular-todolist");
 	}else
@@ -64,6 +69,12 @@ app.controller("LocalStorage", function($scope, localStorageService){
 	};
 	$scope.clean = function(){
 		$scope.activities = [];		
+	};
+});
+
+app.filter("removeHtml",function(){
+	return function(texto){
+		return String(texto).replace(/<[^>]+>/gm,'');
 	};
 });
 

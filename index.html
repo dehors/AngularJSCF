@@ -53,5 +53,9 @@
 			{{ activity.description }} - {{ activity.date | date: 'short' }}
 		</li>
 	</ul>
+<h1>Filters</h1>
+	{{ htmlstring | removeHtml }}
+	{{ mi_html | json }}
+	{{ costo | currency:'$' }}
  </body>
 </html>
