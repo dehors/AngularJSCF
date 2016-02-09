@@ -102,4 +102,27 @@ angular.module("MyFirstapp")
 	$scope.clean = function(){
 		$scope.todo = ToDoService.clean();
 	};
+
+})
+
+.controller("CustomDirective", function($scope, $http){
+	$http.get("https://api.github.com/users/slam24/repos")
+	.success(function(data){
+		$scope.repos = data;
+	})
+	.error(function(err){
+		console.log(err);
+	});
+})
+
+.directive("backImg",function(){
+	return function(scope,element,attrs){	
+		attrs.$observe("backImg", function(value){
+			element.css({
+				"background-image": "url("+value+")",
+				"background-size": "cover",
+				"background-position": "center"
+			});
+		});
+	};
 })

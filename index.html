@@ -20,6 +20,26 @@
 	h1{
 		color:#799999;
 	}
+
+	h2{
+		color: #66A8E6;
+	}
+	.circular{
+		border-radius: 50%;
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+	}
+	.circular2{
+	background: linear-gradient(rgb(208, 208, 208), rgb(242, 242, 242) 50%, rgb(208, 208, 208)) repeat scroll 0% 0% transparent;
+	box-shadow: 0px 0px 5px rgb(51, 51, 51);
+	border: 1px solid rgb(239, 241, 239);
+	position: relative;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	}
 /*---------------------------------------------*/
 	.animate-hide {
 	  -webkit-transition: all linear 0.5s;
@@ -129,6 +149,7 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
 	{{ costo | currency:'$' }}
  </body>
  -->
+ <!--
  <body ng-controller="Factories">
  <h1>Factories</h1>
  <h2>New Activity</h2>
@@ -143,6 +164,22 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
 		<li ng-repeat="activity in todo">
 			{{ activity.description }} - {{ activity.date | date: 'short' }} - <a href="" ng-click="removeActv(activity)">x</a> 	
 		</li>
-	</ul>
+	</ul> 
 </body>
+ -->
+ <body ng-controller="CustomDirective">
+ <h1>ng-events</h1>
+	<button ng-mouseover="count = count + 1" ng-init="count=0">
+	Increment (when mouse is over)
+	</button>
+	count: {{count}}
+ <h1>ng-src</h1>
+ 	<ul>
+ 		<li ng-repeat="repo in repos">
+ 			<img class="circular2" ng-src="{{ repo.owner.avatar_url }}">
+ 			<div class="circular" back-img="{{ repo.owner.avatar_url }}"></div>
+ 			<h2>{{ repo.name }}</h2>
+ 		</li>
+ 	</ul>
+ </body>
 </html>
