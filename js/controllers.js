@@ -88,3 +88,18 @@ angular.module("MyFirstapp")
 .controller("ChildController", function(){
 
 })
+
+.controller("Factories", function($scope, ToDoService){
+	$scope.todo = ToDoService.getAll();
+	$scope.newActiv = {};
+	$scope.addActv = function(){
+		ToDoService.add($scope.newActiv);
+		$scope.newActiv = {};
+	};
+	$scope.removeActv = function(item){
+		$scope.todo = ToDoService.removeItem(item);
+	};
+	$scope.clean = function(){
+		$scope.todo = ToDoService.clean();
+	};
+})

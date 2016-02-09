@@ -128,26 +128,20 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
 	{{ costo | currency:'$' }}
  </body>
  -->
- <body ng-controller="LocalStorage">
- <h1>Local Storage</h1>
+ <body ng-controller="Factories">
+ <h1>Factories</h1>
  <h2>New Activity</h2>
  <form ng-submit="addActv()">
  	<input type="text" ng-model="newActiv.description">
- 	<input type="datetime-local" ng-model="newActiv.date">
- 	<input type="submit" value="Add activity">
+ 	<input type="datetime-local" ng-model="newActiv.date"> <input type="submit" value="Add activity">
  </form>
 <h2>Clear List</h2>
 	<button ng-click="clean()">Clean</button>
 <h2>Activities</h2>
 	<ul>
-		<li ng-repeat="activity in activities">
-			{{ activity.description }} - {{ activity.date | date: 'short' }}
+		<li ng-repeat="activity in todo">
+			{{ activity.description }} - {{ activity.date | date: 'short' }} - <a href="" ng-click="removeActv(activity)">x</a> 	
 		</li>
 	</ul>
-<hr>
-<h1>Filters</h1>
-	{{ htmlstring | removeHtml }}
-	{{ mi_html | json }}
-	{{ costo | currency:'$' }}
 </body>
 </html>
