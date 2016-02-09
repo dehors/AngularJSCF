@@ -22,13 +22,15 @@ app.controller("FirstController", function($scope){
 app.controller("jsonplaceholder", function($scope, $http){
 	$scope.posts = [];
 	$scope.newPost = {};
+	$scope.loading = true;
 	$http.get("http://jsonplaceholder.typicode.com/posts")
 		.success(function(data){
 			$scope.posts = data;
+			$scope.loading = false;
 			console.log(data);
 		})
 		.error(function(err){
-
+			$scope.loading = false;
 		});
 	$scope.addPost = function(){
 		$http.post("http://jsonplaceholder.typicode.com/posts",{
@@ -38,10 +40,10 @@ app.controller("jsonplaceholder", function($scope, $http){
 		})
 		.success(function(data,status,headers,config){
 			$scope.posts.push($scope.newPost);
-			$scope.newPost = {};	
+			$scope.newPost = {};				
 		})
 		.error(function(error,status,headers,config){
-			console.log(error);
+			console.log(error);			
 		});
 	};
 

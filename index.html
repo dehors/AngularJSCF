@@ -3,6 +3,42 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Curso angular</title>
+	<style type="text/css">
+	.animated{
+		opacity: 1px;
+		max-height: auto;
+		overflow: hidden;
+		transition: all 2s;
+	}
+	.animated.ng-hide{
+		opacity: 0;
+		max-height: 0px !important;
+		overflow: hidden;
+		display: block !important;
+	}
+/*---------------------------------------------*/
+	.animate-hide {
+	  -webkit-transition: all linear 0.5s;
+	  transition: all linear 0.5s;
+	  line-height: 20px;
+	  opacity: 1;
+	  padding: 10px;
+	  border: 1px solid black;
+	  background: white;
+	}
+
+	.animate-hide.ng-hide {
+	  line-height: 0;
+	  opacity: 0;
+	  padding: 0 10px;
+	}
+
+	.check-element {
+	  padding: 10px;
+	  border: 1px solid black;
+	  background: white;
+	}
+	</style>
 	<script src="./node_modules/angular/angular.js"></script>
 	<script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script> 
 	<script src="js/controller.js"></script>
@@ -23,21 +59,38 @@
 	<button ng-click="addComment()">add</button>
 </body>
  -->
-<!--
+
 <body ng-controller="jsonplaceholder">
 <h1>New Posts</h1>
 	<input type="text" ng-model="newPost.title">
 	<textarea ng-model="newPost.body"></textarea> 
 	<button ng-click="addPost()">add</button>
 <h1>Posts</h1>
-	<ul>
+	<div ng-show="loading">Loading...</div>
+	<div ng-show="!loading && posts.length <= 0">No results found</div>
+	<ul ng-show="posts.length > 0" class="animated">
 		<li ng-repeat="post in posts">
 			<h2>{{ post.title }}</h2>
 			<p>{{ post.body }}</p>	
 		</li>
 	</ul>
+<!-- ------------------------------------------------ -->
+Click me: <input type="checkbox" ng-model="checked"><br/>
+<div>
+  Show:
+  <div class="check-element animate-hide animated" ng-show="checked">
+    <span class="glyphicon glyphicon-thumbs-up"></span> I show up when your checkbox is checked.
+  </div>
+</div>
+<div>
+  Hide:
+  <div class="check-element animate-hide animated" ng-hide="checked">
+    <span class="glyphicon glyphicon-thumbs-down"></span> I hide when your checkbox is checked.
+  </div>
+</div>
 </body>
- -->
+
+ <!--
  <body ng-controller="LocalStorage">
  <h1>New Activity</h1>
  <form ng-submit="addActv()">
@@ -58,4 +111,5 @@
 	{{ mi_html | json }}
 	{{ costo | currency:'$' }}
  </body>
+  -->
 </html>
