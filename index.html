@@ -65,7 +65,8 @@
 	}
 	</style>
 	<script src="./node_modules/angular/angular.js"></script>
-	<script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>	
+	<script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+	<script src="./node_modules/angular-utils-pagination/dirPagination.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
 	<!-- <script src="js/factories.js"></script> -->
@@ -181,19 +182,24 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
 
 <table id="searchTextResults" class="table table-striped table-hover">
   <tr>
-  	  <th ng-click="sort('id')">Id</th>
-	        <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+  	  <th ng-click="sort('id')">Id <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+	        
 	  <th>Img ng src</th>
 	  <th>Img directive</th>
-	  <th ng-click="sort('name')">Name</th>
-	        <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+	  <th ng-click="sort('name')">Name <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+	        
   </tr>
-  <tr ng-repeat="repo in repos |orderBy:sortKey:reverse | filter:search">
+  <tr dir-paginate="repo in repos |orderBy:sortKey:reverse | filter:search | itemsPerPage:3">
     <td>{{ repo.id }}</td>
     <td><img class="circular2" ng-src="{{ repo.owner.avatar_url }}"></td>
     <td><div class="circular" back-img="{{ repo.owner.avatar_url }}"></div></td>
     <td>{{ repo.name }}</td>
   </tr>
-</table> 	
+</table>
+    <dir-pagination-controls
+        max-size="5"
+        direction-links="true"
+        boundary-links="true" >
+    </dir-pagination-controls> 	
  </body>
 </html>

@@ -1,2 +1,2 @@
-var MyFirstapp = angular.module('MyFirstapp', ["LocalStorageModule"]); 
+var MyFirstapp = angular.module('MyFirstapp', ["LocalStorageModule","angularUtils.directives.dirPagination"]); 
 
