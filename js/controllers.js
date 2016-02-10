@@ -113,6 +113,10 @@ angular.module("MyFirstapp")
 	.error(function(err){
 		console.log(err);
 	});
+	 $scope.sort = function(keyname){
+		$scope.sortKey = keyname;
+		$scope.reverse = !$scope.reverse;
+	}
 })
 
 .directive("backImg",function(){

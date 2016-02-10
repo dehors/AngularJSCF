@@ -179,13 +179,17 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
 <label >Search</label>
 	<input type="text" ng-model="search" class="form-control" placeholder="Search">
 
-<table id="searchTextResults">
+<table id="searchTextResults" class="table table-striped table-hover">
   <tr>
+  	  <th ng-click="sort('id')">Id</th>
+	        <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
 	  <th>Img ng src</th>
 	  <th>Img directive</th>
-	  <th>Name</th>
+	  <th ng-click="sort('name')">Name</th>
+	        <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
   </tr>
-  <tr ng-repeat="repo in repos | filter:search">
+  <tr ng-repeat="repo in repos |orderBy:sortKey:reverse | filter:search">
+    <td>{{ repo.id }}</td>
     <td><img class="circular2" ng-src="{{ repo.owner.avatar_url }}"></td>
     <td><div class="circular" back-img="{{ repo.owner.avatar_url }}"></div></td>
     <td>{{ repo.name }}</td>
